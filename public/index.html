@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Home Idiomas</title>
+  <style>
+    body { font-family: Arial; background: #f4f4f4; }
+    #chatbox { width: 400px; margin: 50px auto; background: white; padding: 20px; border-radius: 8px; }
+    .message { margin: 10px 0; }
+    .user { text-align: right; color: blue; }
+    .bot { text-align: left; color: green; }
+    input { width: 100%; padding: 10px; }
+  </style>
+</head>
+<body>
+
+<div id="chatbox">
+  <div id="messages"></div>
+  <input id="input" placeholder="Digite sua mensagem..." autocomplete="off"/>
+</div>
+
+<script>
+  const input = document.getElementById('input');
+  const messages = document.getElementById('messages');
+  const sessionId = Math.random().toString(36).substring(7);
+
+  input.addEventListener('keypress', async (e) => {
+    if (e.key === 'Enter') {
+      const msg = input.value;
+      appendMessage(msg, 'user');
+      input.value = '';
+
+      const res = await fetch('/message', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: msg, sessionId })
+      });
+      const data = await res.json();
+      appendMessage(data.reply, 'bot');
+    }
+  });
+
+  function appendMessage(text, cls) {
+    const div = document.createElement('div');
+    div.className = `message ${cls}`;
+    div.textContent = text;
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+  }
+</script>
+
+</body>
+</html>
