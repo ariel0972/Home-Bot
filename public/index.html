@@ -30,12 +30,12 @@
       appendMessage(msg, 'user');
       input.value = '';
 
-      const res = await fetch('/api/message', {
+      const res = await fetch('/api/message.js', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: msg, sessionId })
       });
-      
+
       const data = await res.json();
       appendMessage(data.reply, 'bot');
     }
