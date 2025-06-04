@@ -13,7 +13,7 @@ const dialogflow = new SessionsClient({
 });
 const projectId = process.env.DIALOGFLOW_PROJECT_ID;
 
-app.post('/message', async (req, res) => {
+app.post('/API/message.js', async (req, res) => {
   const message = req.body.message;
   const sessionId = req.body.sessionId;
 

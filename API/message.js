@@ -9,12 +9,8 @@ export default async function handler(req, res) {
 
   const { message, sessionId } = req.body;
 
-  const reply = `Você disse: ${message}`;
-
-  res.status(200).json({ reply });
-  
   const keyPath = path.join(process.cwd(), 'dialogflow-key.json');
-  const credentials = JSON.parse(readFileSync(keyPath, 'utf8'));
+  const credentials =  JSON.parse(readFileSync(keyPath, 'utf8'));
 
   const client = new SessionsClient({
     credentials: {
