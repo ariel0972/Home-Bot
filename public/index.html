@@ -30,7 +30,7 @@
       appendMessage(msg, 'user');
       input.value = '';
 
-      const res = await fetch('/api/message.js', {
+      const res = await fetch('/API/message.js', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: msg, sessionId })
