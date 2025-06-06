@@ -3,16 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <title>Chat Home Idiomas</title>
-  <style>
-    body { font-family: Arial; background: #f4f4f4; }
-    #chatbox { width: 400px; margin: 50px auto; background: white; padding: 20px; border-radius: 8px; }
-    .message { margin: 10px 0; }
-    .user { text-align: right; color: blue; }
-    .bot { text-align: left; color: green; }
-    input { width: 100%; padding: 10px; }
-  </style>
+  <link rel="stylesheet" href="chat.css">
 </head>
 <body>
+  <section class="header">
+        <nav>
+            <a href="src/index.html"><img src="src/img/Logo home.png" alt=""></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa-sharp fa-solid fa-xmark" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="/public/src/index.html">HOME</a></li>
+                    <li><a href="">SOBRE</a></li>
+                    <li><a href="">TRABLHE CONOSCO</a></li>
+                    <li><a href="">BLOG</a></li>
+                    <li><a href="">CONTATO</a></li>
+                </ul>
+            </div>
+            <i class="fa-sharp fa-solid fa-bars" style="color: #000000;"onclick="showMenu()"></i>
+        </nav>
 
 <div id="chatbox">
   <div id="messages"></div>
